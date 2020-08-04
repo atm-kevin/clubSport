@@ -1,0 +1,61 @@
+Module50000Name = ClubSport
+Module50000Desc = ClubSport Description
+
+ATMAbout = Ce module a été développé par <a href="http://www.atm-consulting.fr" target="_blank">ATM Consulting</a><br>Vous pouvez retrouver la documentation sur notre <a href="http://wiki.atm-consulting.fr/index.php/Accueil" target="_blank">wiki</a><br><br>Pour toute question technique ou retour, contactez-nous sur <a href="mailto:support@atm-consulting.fr">support@atm-consulting.fr</a><br><br>Pour toute question commerciale, contactez-nous sur <a href="mailto:contact@atm-consulting.fr">contact@atm-consulting.fr</a> ou au +33 9 77 19 50 70<br><br>Retrouvez nos autres modules sur <a href="http://www.dolistore.com/search.php?orderby=position&orderway=desc&search_query=atm&submit_search=Rechercher" target="_blank">Dolistore</a>
+
+ClubSportSetup = Configuration du module ClubSport
+ClubSportAbout = A propos du module ClubSport
+
+ClubSport=ClubSport
+AbricotNeedUpdate=Le module abricot doit être mis à jour
+LinkToThirparty=Lien vers le tiers
+
+# INIT
+ClubSportNewRightsDefinedCheckUserRights=Ce module utilise ces propres droits utilisateurs, si cela n'est pas déjà fait, vérifier les droits.
+
+# SETUP
+ParamLabel=Nom du paramètre
+ParamDesc=Une description si besoin
+ParamHelp=Le contenu de l'aide
+
+# MENU
+TopMenuClubSport= Sport 2.0
+
+# STATUS
+ClubSportStatusCanceled=Abandonnée (fermée)
+ClubSportStatusDraft=Brouillon (à valider)
+ClubSportStatusValidated=Validée (à accepter)
+ClubSportStatusRefused=Refusée (fermée)
+ClubSportStatusAccepted=Acceptée (fermée)
+
+ClubSportStatusShortCanceled=Abandonnée
+ClubSportStatusShortDraft=Brouillon
+ClubSportStatusShortValidated=Validée
+ClubSportStatusShortRefused=Refusée
+ClubSportStatusShortAccepted=Acceptée
+
+# LIST
+ClubSportList= Liste des sessions sportives disponibles
+NoClubSport=(vide)
+
+# CARD
+NewClubSport=Nouvelle session sportive
+ClubSportCard=Fiche session sportive
+
+ClubSportModify=Modifier
+ClubSportClone=Cloner
+ClubSportValid=Valider
+ClubSportAccept=Accepter
+ClubSportRefuse=Refuser
+ClubSportReopen=Rouvrir
+ClubSportCancel=Abandonner
+ClubSportDelete=Supprimer
+
+ConfirmValidateClubSportTitle=Confirmation d'activation
+ConfirmValidateClubSportBody=Souhaitez-vous vraiment activer cette fiche ClubSport %s ?
+
+ConfirmDeleteClubSportTitle=Confirmation de suppression
+ConfirmDeleteClubSportBody=Souhaitez-vous vraiment supprimer cette fiche ClubSport %s ?
+
+clubsport_doublecheck_delete = Vérification de la suppression
+clubsport_CheckConfirmDeleteProduct= D'autres éléments sont associés à ce produit/service. <hr> Êtes-vous sûr de vouloir supprimer ce produit/service ? <br/> Si oui, le produit/service ainsi que tous les éléments associés seront supprimés.
