@@ -22,7 +22,6 @@ dol_include_once('clubsport/class/clubsport.class.php');
 dol_include_once('clubsport/lib/clubsport.lib.php');
 
 if(empty($user->rights->clubsport->read)) accessforbidden();
-
 $langs->load('clubsport@clubsport');
 
 $action = GETPOST('action');
@@ -36,8 +35,7 @@ $object = new ClubSport($db);
 
 if (!empty($id) || !empty($ref)) $object->fetch($id, true, $ref);
 
-$hookmanager->initHooks(array('clubsportcard', 'globalcard'));
-
+$hookmanager->initHooks(array('globalcard'));
 
 if ($object->isextrafieldmanaged)
 {
@@ -47,12 +45,12 @@ if ($object->isextrafieldmanaged)
     $search_array_options = $extrafields->getOptionalsFromPost($object->table_element, '', 'search_');
 }
 
-// Initialize array of search criterias
+//Initialize array of search criterias
 //$search_all=trim(GETPOST("search_all",'alpha'));
 //$search=array();
-//foreach($object->fields as $key => $val)
-//{
-//    if (GETPOST('search_'.$key,'alpha')) $search[$key]=GETPOST('search_'.$key,'alpha');
+//foreach($object->fields as $key => $val) {
+//	if (GETPOST('search_' . $key, 'alpha'))
+//		$search[$key] = GETPOST('search_' . $key, 'alpha');
 //}
 
 /*
@@ -60,6 +58,7 @@ if ($object->isextrafieldmanaged)
  */
 
 $parameters = array('id' => $id, 'ref' => $ref);
+
 $reshook = $hookmanager->executeHooks('doActions', $parameters, $object, $action); // Note that $action and $object may have been modified by some
 if ($reshook < 0) setEventMessages($hookmanager->error, $hookmanager->errors, 'errors');
 
@@ -81,10 +80,10 @@ if (empty($reshook))
     include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php';		// Must be include, not include_once
 
 
-
-
     $error = 0;
+
 	switch ($action) {
+
 		case 'add':
 		case 'update':
 			$object->setValues($_REQUEST); // Set standard attributes
@@ -113,7 +112,9 @@ if (empty($reshook))
 			}
 
 			$res = $object->save($user);
-            if ($res < 0)
+
+
+            if ($res <= 0)
             {
                 setEventMessage($object->errors, 'errors');
                 if (empty($object->id)) $action = 'create';

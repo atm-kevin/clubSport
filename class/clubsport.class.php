@@ -104,7 +104,6 @@ class ClubSport extends SeedObject
             'searchall' => 1,
             'comment' => 'Reference of object'
         ),
-
         'entity' => array(
             'type' => 'integer',
             'label' => 'Entity',
@@ -115,7 +114,6 @@ class ClubSport extends SeedObject
             'index' => 1,
             'position' => 20
         ),
-
         'status' => array(
             'type' => 'integer',
             'label' => 'Status',
@@ -131,7 +129,6 @@ class ClubSport extends SeedObject
                 -1 => 'Canceled'
             )
         ),
-
         'label' => array(
             'type' => 'varchar(255)',
             'label' => 'Label',
@@ -143,7 +140,6 @@ class ClubSport extends SeedObject
             'help' => 'Help text',
             'showoncombobox' => 1
         ),
-
         'fk_soc' => array(
             'type' => 'integer:Societe:societe/class/societe.class.php',
             'label' => 'ThirdParty',
@@ -153,7 +149,6 @@ class ClubSport extends SeedObject
             'index' => 1,
             'help' => 'LinkToThirparty'
         ),
-
         'description' => array(
             'type' => 'text', // or html for WYSWYG
             'label' => 'Description',
@@ -183,7 +178,41 @@ class ClubSport extends SeedObject
 	        'position'=>50,
 	        'notnull'=>-1,
 	        'visible'=>1,
-	        'index'=>1),
+	        'index'=>1,
+        ),
+        'note_public' => array(
+        	'type'=>'html',
+	        'label'=>'NotePublic',
+	        'enabled'=>'1',
+	        'position'=>61,
+	        'notnull'=>0,
+	        'visible'=>0,
+        ),
+        'note_private' => array(
+        	'type'=>'html',
+	        'label'=>'NotePrivate',
+	        'enabled'=>'1',
+	        'position'=>62,
+	        'notnull'=>0,
+	        'visible'=>0,
+        ),
+        'fk_user_creat' => array(
+        	'type'=>'integer:User:user/class/user.class.php',
+	        'label'=>'UserAuthor',
+	        'enabled'=>'1',
+	        'position'=>510,
+	        'notnull'=>1,
+	        'visible'=>-2,
+	        'foreignkey'=>'user.rowid',
+        ),
+        'fk_user_modif' => array(
+        	'type'=>'integer:User:user/class/user.class.php',
+	        'label'=>'UserModif',
+	        'enabled'=>'1',
+	        'position'=>511,
+	        'notnull'=>-1,
+	        'visible'=>2,
+        ),
 
         //        'fk_user_valid' =>array(
 //            'type' => 'integer',
@@ -212,7 +241,7 @@ class ClubSport extends SeedObject
 	public $entity;
 
 	/** @var int $status Object status */
-	public $status = 0;
+	public $status;
 
     /** @var string $label Object label */
     public $label;
@@ -226,8 +255,12 @@ class ClubSport extends SeedObject
 
 	public $fk_product;
 
+	public $fk_user_modif;
 
-    /**
+	public $fk_user_creat;
+
+
+	/**
      * ClubSport constructor.
      * @param DoliDB    $db    Database connector
      */
@@ -249,6 +282,8 @@ class ClubSport extends SeedObject
      */
     public function save($user)
     {
+    	$this->fk_user_modif = $user->id;
+
         if (!empty($this->is_clone))
         {
             // TODO determinate if auto generate
@@ -335,8 +370,8 @@ class ClubSport extends SeedObject
         if ($this->status === self::STATUS_DRAFT)
         {
             // TODO determinate if auto generate
-//            $this->ref = $this->getRef();
-//            $this->fk_user_valid = $user->id;
+		    $this->ref = $this->getRef();
+//			$this->fk_user_valid = $user->id;
             $this->status = self::STATUS_VALIDATED;
             $this->withChild = false;
 

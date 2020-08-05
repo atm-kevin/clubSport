@@ -20,6 +20,8 @@ ParamHelp=Le contenu de l'aide
 
 # MENU
 TopMenuClubSport= Sport 2.0
+SessionsSport = Sessions sportives
+CreateOneSession = Créer une session
 
 # STATUS
 ClubSportStatusCanceled=Abandonnée (fermée)
@@ -37,6 +39,8 @@ ClubSportStatusShortAccepted=Acceptée
 # LIST
 ClubSportList= Liste des sessions sportives disponibles
 NoClubSport=(vide)
+DatePlanification= Date de début
+DateFin = Date de fin
 
 # CARD
 NewClubSport=Nouvelle session sportive

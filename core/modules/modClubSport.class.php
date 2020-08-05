@@ -141,6 +141,7 @@ class modClubSport extends DolibarrModules
 		// 'user'             to add a tab in user view
         $this->tabs = array();
 
+
         // Dictionaries
 	    if (! isset($conf->clubsport->enabled))
         {
@@ -223,7 +224,7 @@ class modClubSport extends DolibarrModules
 			'fk_menu'=>'fk_mainmenu=clubsport',
 			// This is a Left menu entry
 			'type'=>'left',
-			'titre'=>'Activités sportives',
+			'titre'=>$langs->trans('SessionsSport'),
 			'mainmenu'=>'clubsport',
 			'leftmenu'=>'clubsport_sportactivities',
 			'url'=>'/clubsport/list.php',
@@ -243,7 +244,7 @@ class modClubSport extends DolibarrModules
 			'fk_menu'=>'fk_mainmenu=clubsport,fk_leftmenu=clubsport_sportactivities',
 			// This is a Left menu entry
 			'type'=>'left',
-			'titre'=>'Créer une activité',
+			'titre'=>$langs->trans('CreateOneSession'),
 			'mainmenu'=>'clubsport',
 			'leftmenu'=>'clubsport_create',
 			'url'=>'/clubsport/card.php?action=create',
