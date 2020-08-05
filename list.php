@@ -106,6 +106,7 @@ $formcore = new TFormCore($_SERVER['PHP_SELF'], 'form_list_clubsport', 'GET');
 $nbLine = GETPOST('limit');
 if (empty($nbLine)) $nbLine = !empty($user->conf->MAIN_SIZE_LISTE_LIMIT) ? $user->conf->MAIN_SIZE_LISTE_LIMIT : $conf->global->MAIN_SIZE_LISTE_LIMIT;
 
+
 // List configuration
 $listViewConfig = array(
 	'view_type' => 'list' // default = [list], [raw], [chart]
@@ -131,7 +132,8 @@ $listViewConfig = array(
 	,'type' => array(
 		'date_creation' => 'date' // [datetime], [hour], [money], [number], [integer]
 		,'tms' => 'date'
-		, 'date_fin' => 'date'
+		,'date_fin' => 'date'
+		,'date_warning' => 'date'
 	)
 	,'search' => array(
 		'date_creation' => array('search_type' => 'calendars', 'allow_is_null' => true)
@@ -150,10 +152,12 @@ $listViewConfig = array(
 		,'date_creation' => $langs->trans('DateCre')
 		,'tms' => $langs->trans('DateMaj')
 		,'date_fin' => $langs->trans('DateFin')
+		,'date_warning' => $langs->trans("DateWarning")
 	)
 	// résultat de la requête sql
 	,'eval'=>array(
-		'ref' => '_getObjectNomUrl(\'@rowid@\', \'@val@\')'
+		'ref' => '_getObjectNomUrl(\'@rowid@\', \'@val@\')',
+		'date_warning' => '_warningDate(\'@date_fin@\')'
 //		,'fk_user' => '_getUserNomUrl(@val@)' // Si on a un fk_user dans notre requête
 	)
 );
@@ -211,4 +215,18 @@ function _getUserNomUrl($fk_user)
 	}
 
 	return '';
+}
+
+function _warningDate($dateFin)
+{
+	$dateEcheance = date('Y-m-d', strtotime($dateFin. ' + 10 days')) ;
+	$dtTime = strtotime($dateFin. ' + 10 days');
+	$today = time();
+
+	if ($today > $dtTime){
+		$dateEcheance.= '<span style="margin-left: 25px;"><i class="fas fa-exclamation-triangle"></i></span>';
+	}
+
+	return $dateEcheance;
+
 }

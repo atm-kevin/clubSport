@@ -122,8 +122,10 @@ class ActionsClubSport
 					. $object->id . "&date_debut=" . date("Y-m-d H:i:s") . "&date_fin="
 					. date('Y-m-d H:i:s', strtotime('+' . substr($object->duration, 0, strlen($object->duration - 1)) . ' ' . $mesure)),
 					1)
-				. "&action=create&label="
-				. substr($object->ref, 0, -2), 'button-clubsport-creation', $user->rights->clubsport->write, $param);
+				//  On pré-remplir aussi la date d'échéance à la création d'une session par le biais du produit/service
+//					. "&date_warning=" . date('Y-m-d H:i:s', strtotime('+10 days' . substr($object->duration, 0, strlen($object->duration - 1)) . ' ' . $mesure))
+					. "&action=create&label="
+					. substr($object->ref, 0, -2), 'button-clubsport-creation', $user->rights->clubsport->write, $param);
 
 			$form = new Form($this->db);
 			if ($action == 'ask_delete_clubsportchild') {

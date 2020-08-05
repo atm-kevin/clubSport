@@ -45,6 +45,7 @@ DateFin = Date de fin
 # CARD
 NewClubSport=Nouvelle session sportive
 ClubSportCard=Fiche session sportive
+DateWarning = Date d'échéance
 
 ClubSportModify=Modifier
 ClubSportClone=Cloner
