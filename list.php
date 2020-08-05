@@ -224,7 +224,7 @@ function _warningDate($dateFin)
 	$today = time();
 
 	if ($today > $dtTime){
-		$dateEcheance.= '<span style="margin-left: 25px;"><i class="fas fa-exclamation-triangle"></i></span>';
+		$dateEcheance.= '<span style="margin-left: 25px;"><i class="fas fa-exclamation-triangle"></i></span>' . " Date d'échéance dépassée";
 	}
 
 	return $dateEcheance;
